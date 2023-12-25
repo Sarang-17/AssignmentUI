@@ -54,8 +54,6 @@ const cleanOCRData = (text) => {
 
   name = name.trim();
   changedText = changedText.substring(lastUsed + 1);
-  console.log(changedText);
-
   var lastName = "";
 
   for (i = 0; i < changedText.length; i++) {
@@ -77,11 +75,6 @@ const cleanOCRData = (text) => {
 
   lastName = lastName.trim();
   changedText = changedText.substring(lastUsed + 1);
-
-  console.log(idNo);
-  console.log(name);
-  console.log(lastName);
-  console.log(changedText);
 
   var stringArray = [];
   temp = "";
@@ -106,19 +99,12 @@ const cleanOCRData = (text) => {
 
     if (cnt1 && cnt2 && stringArray[i].length >= 8) {
       for (j = stringArray[i].length - 1; j >= 0; j--) {
-        console.log(
-          stringArray[i][j] +
-            stringArray[i][j - 1] +
-            stringArray[i][j - 2] +
-            stringArray[i][j - 3]
-        );
         if (
           stringArray[i][j] !== " " &&
           stringArray[i][j - 1] !== " " &&
           stringArray[i][j - 2] !== " " &&
           stringArray[i][j - 3] !== " "
         ) {
-          console.log(j);
           stringArray[i] = stringArray[i].substring(0, j + 1);
           break;
         }
@@ -134,8 +120,6 @@ const cleanOCRData = (text) => {
     }
   }
 
-  console.log(stringArray);
-  console.log(newArray);
   var finalData = {};
   finalData["Identification Number"] = idNo;
   finalData["Name"] = name;
@@ -143,7 +127,6 @@ const cleanOCRData = (text) => {
   finalData["Birth Date"] = newArray[0];
   finalData["Date of Issue"] = newArray[1];
   finalData["Date of Expiry"] = newArray[2];
-  console.log(finalData);
 
   return finalData;
 };

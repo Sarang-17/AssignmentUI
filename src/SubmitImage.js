@@ -6,7 +6,6 @@ const SubmitImage = ({ image, imageDataSetter }) => {
   const handleUpload = async () => {
     try {
       if (image) {
-        console.log(image.split(",")[1]);
         const formData = new FormData();
         formData.append("file", image);
 
@@ -31,7 +30,6 @@ const SubmitImage = ({ image, imageDataSetter }) => {
         const response = await axios.post(apiUrl, requestData);
         const text = response.data.responses[0].fullTextAnnotation.text;
         const cleanedText = cleanOCRData(text);
-        console.log(cleanOCRData(text));
         imageDataSetter(cleanedText);
       }
     } catch (error) {
